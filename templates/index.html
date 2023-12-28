@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <title>SummarizIt</title>
+  </head>
+  <body>
+    <div class="col">
+      <div class="row">
+        <div class="container" id="input-container">
+          <h1>SummarizIt</h1>
+          <form
+            action="/"
+            method="post"
+            enctype="multipart/form-data"
+            onsubmit="return validateForm();"
+          >
+            <label for="link">Enter YouTube Link:</label>
+            <input type="url" id="link" name="link" />
+
+            <label for="audio-file">Choose Audio File:</label>
+            <input
+              type="file"
+              id="audio-file"
+              name="audio-file"
+              accept="audio/*"
+            />
+
+            <label for="summary-type">Choose Summary Type:</label>
+            <select id="summary-type" name="summary-type">
+              <option value="normal" selected>Normal</option>
+              <option value="overview">Short</option>
+              <option value="detailed">Detailed</option>
+            </select>
+
+            <label for="audio-language">Choose Audio Language:</label>
+            <select id="audio-language" name="audio-language">
+              <option value="english" selected>English</option>
+              <option value="others">Others</option>
+            </select>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="container">
+          <h1>Input Taken</h1>
+
+          {% if link %}
+          <p>YouTube Link: {{ link }}</p>
+          {% elif file_name %}
+          <p>Uploaded File: {{ file_name }}</p>
+          {% else %}
+          <p>No form submission yet.</p>
+          {% endif %}
+
+          <p>Summary Type: {{ summary_type }}</p>
+          <p>Audio Language: {{ audio_language }}</p>
+          <!-- <p>Summarized Text: {{ summarized_text }}</p> -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="col">
+      <div class="row">
+        <div class="container">
+          <h1>Summary</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo eligendi dolorum sit. Totam iure at soluta ad. Dolorem reiciendis harum, quam dolores architecto ullam, facere eum culpa porro sit minus. Consectetur doloremque omnis excepturi ullam et quia deserunt earum in distinctio? Libero obcaecati aspernatur ipsam amet suscipit, vero perspiciatis? Velit beatae dicta ut nesciunt culpa incidunt quam, explicabo, nobis, accusantium veritatis inventore in similique necessitatibus soluta? Inventore nemo laboriosam accusamus asperiores aperiam sint! Debitis nihil accusantium, libero non repudiandae dolorem odit voluptatem adipisci quas, inventore minus fugit enim repellendus tempora tempore? Eius ea totam consectetur enim. Quo temporibus amet blanditiis.</p>
+          <!-- <p>Summarized Text: {{ summarized_text }}</p> -->
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script src="../static/script.js"></script>
+  </body>
+</html>
